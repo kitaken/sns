@@ -1,0 +1,31 @@
+<h1>Listing translations</h1>
+
+<table>
+  <tr>
+    <th>Article</th>
+    <th>User</th>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @translations.each do |translation| %>
+  <tr>
+    <td><%= translation.article_id %></td>
+    <td><%= translation.user_id %></td>
+    <td><%= translation.title %></td>
+    <td><%= translation.url %></td>
+    <td><%= translation.body %></td>
+    <td><%= link_to 'Show', translation %></td>
+    <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
+    <td><%= link_to 'Destroy', translation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Translation', new_translation_path %>
