@@ -2,13 +2,15 @@
 Sns::Application.routes.draw do
   resources :events
 
-  resources :translations
+  #resources :translations
 
   resources :questions
 
   root :to=> 'welcome#index'
 
-  resources :articles
+  resources :articles do
+    resources :translations
+  end
 
   # Resource じゃなくてふつうに定義したほうがいいかも……
   resource  :message
