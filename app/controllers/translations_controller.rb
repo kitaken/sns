@@ -2,7 +2,7 @@ class TranslationsController < ApplicationController
   # GET /translations
   # GET /translations.json
   def index
-    @translations = Translation.all
+    @translations = Translation.where(:article_id => params[:article_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,7 @@ class TranslationsController < ApplicationController
   # GET /translations/new.json
   def new
     @translation = Translation.new
+    @article_id = params[:article_id]
 
     respond_to do |format|
       format.html # new.html.erb
