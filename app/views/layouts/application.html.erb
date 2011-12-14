@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<% if current_user %>
+		<p>Logged in as <%= h current_user.nickname %></p>
+	<% end %>
 <div id="contents">
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
