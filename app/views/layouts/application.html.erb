@@ -8,7 +8,8 @@
 </head>
 <body>
 	<% if current_user %>
-		<p>Logged in as <%= h current_user.nickname %></p>
+    <p>Logged in as <%= h current_user.nickname %>. <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+    </p>
 	<% end %>
 <div id="contents">
 	<p class="notice"><%= notice %></p>
