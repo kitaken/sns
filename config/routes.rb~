@@ -8,7 +8,9 @@ Sns::Application.routes.draw do
 
   root :to=> 'welcome#index'
 
-  resources :articles,:has_many=>:translations
+  resources :articles do
+    resources :translations
+  end
 
   # Resource じゃなくてふつうに定義したほうがいいかも……
   resource  :message
