@@ -1,0 +1,43 @@
+<%= form_for(@profile, :html => {:multipart => 'true' }) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :nick_name %><br />
+    <%= f.text_field :nick_name %>
+  </div>
+  <div class="field">
+    <%= f.label :real_name %><br />
+    <%= f.text_field :real_name %>
+  </div>
+  <div class="field">
+    <%= f.label :affiliation %><br />
+    <%= f.text_field :affiliation %>
+  </div>
+　<div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select :gender, ['男性', '女性'] %>
+  </div>
+  <div class="field">
+    <%= f.label :introduction %><br />
+    <%= f.text_area :introduction %>
+  </div>
+
+  <div class="field">
+    <%= f.label "プロフィール画像:" %>
+    <%= f.file_field :thumbnail %>
+  </div>  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

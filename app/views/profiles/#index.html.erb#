@@ -1,0 +1,40 @@
+<h1>SNS profiles</h1>
+
+<%#’¤³’¤³’¤Ë’¥¢’¥¤’¥³’¥ó’¤¤’¤Ã’¤Ñ’¤¤’ÇÛ’ÃÖ%>
+
+
+<% @profiles.each do |profile| %>
+<table>
+  <tr>
+  <th><h2><%= profile.nick_name %>’¤Î’¥×’¥í’¥Õ’¥£’¡¼’¥ë</h2></th>
+  </tr>
+
+  <tr>
+    <th>’Ì¾’Á°</th>
+    <td><%= profile.real_name %></td>
+  </tr>			   
+
+  <tr>
+    <th>’½ê’Â°</th>
+    <td><%= profile.affiliation %></td>
+  </tr>’¡¡
+
+’¡¡<tr>
+    <th>’À­’ÊÌ</th>
+    <td><%= profile.gender %></td>
+  </tr>
+
+  <Tr>
+    <th>’¼«’¸Ê’¾Ò’²ð</th>
+    <td><%= profile.introduction %></td>
+  </tr>
+	
+
+</table>
+
+    <%= link_to 'Edit', edit_profile_path(profile) %>
+
+<% end %>
+<br />
+
+<%= link_to 'New Profile', new_profile_path %>
