@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<div id="pic">
+  <p>
+    <%= image_tag( @profile.thumbnail.url,:size => '50x50') %><br>
+    <b>プロフィール画像:</b>
+  </p>
+
+  <p>
+
+  </p>
+</div>
+<div id="main">
+<p>
+  <b>Nick name:</b>
+  <%= @profile.nick_name %>
+</p>
+
+<p>
+  <b>Real name:</b>
+  <%= @profile.real_name %>
+</p>
+
+<p>
+  <b>Affiliation:</b>
+  <%= @profile.affiliation %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @profile.gender %>
+</p>
+
+
+
+<p>
+  <b>Introduction:</b>
+  <%= @profile.introduction %>
+</p>
+
+</div>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

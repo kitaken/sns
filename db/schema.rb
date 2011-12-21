@@ -52,9 +52,16 @@ ActiveRecord::Schema.define(:version => 20111220132652) do
     t.integer  "user_id"
     t.string   "nick_name"
     t.string   "real_name"
+    t.string   "affiliation"
+    t.string   "gender"
     t.text     "introduction"
+    t.string   "pic"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_file_updated_at"
   end
 
   create_table "questions", :force => true do |t|
