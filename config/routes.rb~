@@ -4,7 +4,9 @@ Sns::Application.routes.draw do
 
   #resources :translations
 
-  resources :questions
+  resources :questions do 
+    resources :answers
+  end
 
   root :to=> 'welcome#index'
 

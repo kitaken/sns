@@ -38,3 +38,9 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+group :development do
+  gem "what_methods"
+  gem "wirble"
+  gem "hirb"
+  gem "awesome_print"
+end

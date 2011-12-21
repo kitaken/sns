@@ -1,6 +1,8 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
-  resources :events
+  resources :events do
+    resources :attendances
+  end
 
   #resources :translations
 

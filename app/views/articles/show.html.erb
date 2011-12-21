@@ -20,11 +20,13 @@
   <%= @article.body %>
 </p>
 
-<h2>Translations</h2>
-<% @article.translations.each do |translation| %>
-  <h3><%= h translation.title %></h3>
-  <p><%= h translation.body %></p>
-  <p><%= link_to 'permalink', article_translation_path(translation) %></p>
+<% if @article.type == 'auto_published' %>
+	<h2>Translations</h2>
+	<% @article.translations.each do |translation| %>
+		<h3><%= h translation.title %></h3>
+		<p><%= h translation.body %></p>
+		<p><%= link_to 'permalink', article_translation_path(translation) %></p>
+	<% end %>
 <% end %>
 
   <p><%= link_to 'Create Your New Translation', new_article_translation_path(@article) %></p>

@@ -1,20 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Start:</b>
-  <%= @event.start %>
-</p>
+<h2><%= h @event.title %></h2>
+<p><%= h @event.body %></p>
+<table>
+	<tr><th>Start</th><td><%= @event.start %></td></tr>
+	<tr><th>End</th><td><%= @event.end %></td></tr>
+</table>
 
-<p>
-  <b>End:</b>
-  <%= @event.end %>
-</p>
+<%= form_for @attendance, :url=>event_attendance_path(@event.id,'create') do |f| %>
+	<%= f.select :rsvp,[['Yes','yes'],['No','no'],['Maybe','maybe']] %>
+    <%= f.submit %>
+<% end %>
 
-<p>
-  <b>Body:</b>
-  <%= @event.body %>
-</p>
-
+<p><%= link_to 'Permalink', @event %> <%= link_to 'Edit', edit_event_path(@event) %> <%= link_to 'Destroy', @event, confirm: 'Are you sure?', method: :delete %></p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

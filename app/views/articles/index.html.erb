@@ -10,6 +10,12 @@
 		<p><%= link_to 'Edit', edit_article_path(article) %></p>
 		<p><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></p>
 	<% end %>
+  <% if article.type.to_s.length > 0 %>
+		<h3>Translations</h3>
+		<% article.translations.each do |translation| %>
+			<%= link_to "#{translation.title} translated by #{translation.user.nickname}", article_translation_path(article,translation) %>
+		<% end %>
+	<% end %>
 <% end %>
 </table>
 

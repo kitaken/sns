@@ -1,26 +1,14 @@
 <h1>Listing events</h1>
 
-<table>
-  <tr>
-    <th>Start</th>
-    <th>End</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.start %></td>
-    <td><%= event.end %></td>
-    <td><%= event.body %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+	<h2><%= h event.title %></h2>
+	<p><%= h event.body %></p>
+	<table>
+		<tr><th>Start</th><td><%= event.start %></td></tr>
+		<tr><th>End</th><td><%= event.end %></td></tr>
+	</table>
+	<p><%= link_to 'Show', event %> <%= link_to 'Edit', edit_event_path(event) %> <%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></p>
 <% end %>
-</table>
 
 <br />
 

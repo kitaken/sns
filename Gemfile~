@@ -20,7 +20,6 @@ gem 'jquery-rails'
 
 gem 'devise', '>= 1.4.9'
 gem 'therubyracer'
-gem 'thin'
 
 
 # To use ActiveModel has_secure_password
@@ -38,4 +37,9 @@ gem 'thin'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+end
+group :development do
+  gem "wirble"
+  gem "hirb"
+  gem "awesome_print"
 end

@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
     <%= f.label :start %><br />
-    <%= f.text_field :start %>
+    <%= f.datetime_select :start %>
   </div>
   <div class="field">
     <%= f.label :end %><br />
