@@ -1,5 +1,6 @@
-class CreateProfiles < ActiveRecord::Migration
+class ReCreateProfiles < ActiveRecord::Migration
   def change
+    drop_table :profiles
     create_table :profiles do |t|
       t.integer :user_id
       t.string :nick_name
