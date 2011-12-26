@@ -7,12 +7,31 @@
 	<tr><th>End</th><td><%= @event.end %></td></tr>
 </table>
 
-<%= form_for @attendance, :url=>event_attendance_path(@event.id,'create') do |f| %>
+<%= form_for @attendance, :url=>event_attendance_path(@event.id,@attendance) do |f| %>
 	<%= f.select :rsvp,[['Yes','yes'],['No','no'],['Maybe','maybe']] %>
-    <%= f.submit %>
+  <%= f.submit "#{(@attendance?'Update':'Submit')} Attendance"%>
 <% end %>
 
 <p><%= link_to 'Permalink', @event %> <%= link_to 'Edit', edit_event_path(@event) %> <%= link_to 'Destroy', @event, confirm: 'Are you sure?', method: :delete %></p>
+<h2>Attendances</h2>
+<h3>Says Yes:</h3>
+<ul>
+  <% @event.attendances.reject{|e|e.rsvp!='yes'}.each do |attendance| %>
+    <li><%= attendance.user.nickname %></li>
+  <% end %>
+</ul>
+<h3>Says Maybe:</h3>
+<ul>
+  <% @event.attendances.reject{|e|e.rsvp!='maybe'}.each do |attendance| %>
+    <li><%= attendance.user.nickname %></li>
+  <% end %>
+</ul>
+<h3>Says No:</h3>
+<ul>
+  <% @event.attendances.reject{|e|e.rsvp!='no'}.each do |attendance| %>
+    <li><%= attendance.user.nickname %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
