@@ -1,0 +1,60 @@
+<h1>Message Letter</h1>
+<table>
+  <tr>
+    <th>Sendid</th>
+    <th>Recid</th>
+    <th>Text</th>
+    <th>Day</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @letters.reverse_each do |letter| %>
+  <tr>
+    <td><%= letter.sendid %></td>
+    <td><%= letter.recid %></td>
+    <td><%= letter.text %></td>
+    <td><%= letter.day %></td>
+    <td><%= link_to 'Show', letter %></td>
+    <td><%= link_to 'Edit', edit_letter_path(letter) %></td>
+    <td><%= link_to 'Destroy', letter, confirm: 'メッセージを削除します。よろしいですか？', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+  
+
+<%= form_for(@letter) do |f| %>
+  <% if @letter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@letter.errors.count, "error") %> prohibited this letter from being saved:</h2>
+
+      <ul>
+      <% @letter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sendid %><br />
+    <%= f.number_field :sendid %>
+  </div>
+  <div class="field">
+    <%= f.label :recid %><br />
+    <%= f.number_field :recid %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.datetime_select :day %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

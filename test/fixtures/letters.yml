@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sendid: 111
+  recid: 222
+  text: 元気ですか
+  day: 2012-01-07 19:37:51
+
+two:
+  sendid: 222
+  recid: 111
+  text: 元気じゃない。風邪を引いたかもしれない。
+  day: 2012-01-07 19:37:53
+
+three:
+  sendid: 111
+  recid: 222
+  text:	そうですか。お大事に。
+  day: 2012-01-07 19:38:20
