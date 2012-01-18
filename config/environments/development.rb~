@@ -27,4 +27,10 @@ Sns::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #added 20111024 for devise by ymrl
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  #added 20120118 by ymrl 
+  config.time_zone = 'Tokyo'
 end

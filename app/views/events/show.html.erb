@@ -7,7 +7,8 @@
 	<tr><th>End</th><td><%= @event.end %></td></tr>
 </table>
 
-<%= form_for @attendance, :url=>event_attendance_path(@event.id,@attendance) do |f| %>
+<% attendance_path = @attendance.id ? event_attendance_path(@event.id,@attendance) : event_attendances_path(@event.id) %>
+<%= form_for @attendance, :url=>attendance_path do |f| %>
 	<%= f.select :rsvp,[['Yes','yes'],['No','no'],['Maybe','maybe']] %>
   <%= f.submit "#{(@attendance?'Update':'Submit')} Attendance"%>
 <% end %>

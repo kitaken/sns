@@ -30,4 +30,5 @@ Sns::Application.configure do
 
   #added 20111024 for devise by ymrl
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
 end
