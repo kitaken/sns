@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /questions
   # GET /questions.json
   def index
@@ -41,6 +42,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
+    @question.user_id = current_user.id
 
     respond_to do |format|
       if @question.save
