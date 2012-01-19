@@ -1,5 +1,6 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
+
   resources :letters
 
   resources :events do

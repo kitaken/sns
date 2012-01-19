@@ -1,27 +1,27 @@
 <h1>Listing questions</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>User</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
+
+
 
 <% @questions.each do |question| %>
-  <tr>
-    <td><%= question.title %></td>
-    <td><%= question.user_id %></td>
-    <td><%= question.body %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <h2><%= h question.title %></h2>
+  <p><%= h question.user.nickname %></p>
+  <p><%= question.body.gsub(/\n/,"<br />") %></p>
+  <p>
+    <%= link_to 'Show', question %></br>
+    <%= link_to 'Edit', edit_question_path(question) %><br/>
+    <%= link_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %><br/>
+  </p>
+  <h3>Answers</h3>
+  <%= link_to 'New Answer', new_question_answer_path(question) %>
+  <% question.answers.each do |answer| %>
+  <div>
+    <h4>Answer by <%= h answer.user.nickname %></h4>
+    <p><%= h(answer.body).gsub(/\n/,"<br />") %></p>
+  </div>
+  <%end %>
 <% end %>
-</table>
-
 <br />
 
 <%= link_to 'New Question', new_question_path %>

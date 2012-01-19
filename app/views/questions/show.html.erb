@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @question.title %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @question.user_id %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @question.body %>
-</p>
-
+  <h2><%= h @question.title %></h2>
+  <p><%= h @question.user.nickname %></p>
+  <p><%= h(@question.body).gsub(/\n/,"<br />") %></p>
+  <p>
+    <%= link_to 'Edit', edit_question_path(@question) %><br/>
+    <%= link_to 'Destroy', @question, confirm: 'Are you sure?', method: :delete %><br/>
+  </p>
+  <h3>Answers</h3>
+  <%= link_to 'New Answer', new_question_answer_path(@question) %>
+  <% @question.answers.each do |answer| %>
+  <div>
+    <h4>Answer by <%= h answer.user.nickname %></h4>
+    <p><%= h(answer.body).gsub(/\n/,"<br />") %></p>
+  </div>
+  <%end %>
+<br />
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
