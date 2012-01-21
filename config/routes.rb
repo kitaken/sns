@@ -1,7 +1,11 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
 
-  resources :letters
+  scope '/letterbox' do
+    get "/" , :to=>"letterbox#index"
+    get "/conversation/:id", :to=>"letterbox#conversation"
+    resources :letters
+  end
 
   resources :events do
     resources :attendances
@@ -18,9 +22,6 @@ Sns::Application.routes.draw do
   resources :articles do
     resources :translations
   end
-
-  # Resource じゃなくてふつうに定義したほうがいいかも……
-  resource  :message
 
   devise_for :users do
     get 'tasks', :to=> 'tasks#index', :as => :user_root

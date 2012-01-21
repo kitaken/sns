@@ -1,5 +1,6 @@
 #coding: utf-8
 class LettersController < ApplicationController
+  before_filter :authenticate_user!
   # GET /letters
   # GET /letters.json
   def index
@@ -40,6 +41,7 @@ class LettersController < ApplicationController
   # POST /letters.json
   def create
     @letter = Letter.new(params[:letter])
+    @letter.sender_id = current_user.id
 
     respond_to do |format|
       if @letter.save
