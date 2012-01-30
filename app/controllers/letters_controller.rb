@@ -45,7 +45,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        format.html { redirect_to @letter, notice: 'メッセージの送信を完了しました。' }
+        format.html { redirect_to conversation_path(:id=>@letter.receiver_id), notice: 'メッセージの送信を完了しました。' }
         format.json { render json: @letter, status: :created, location: @letter }
       else
         format.html { render action: "new" }

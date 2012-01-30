@@ -2,16 +2,14 @@
 Sns::Application.routes.draw do
 
   scope '/letterbox' do
-    get "/" , :to=>"letterbox#index"
-    get "/conversation/:id", :to=>"letterbox#conversation"
+    get "/" , :to=>"letterbox#index",:as=>:letterbox
+    get "/:id", :to=>"letterbox#conversation",:as=>:conversation
     resources :letters
   end
 
   resources :events do
     resources :attendances
   end
-
-  #resources :translations
 
   resources :questions do 
     resources :answers

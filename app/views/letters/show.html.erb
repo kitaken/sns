@@ -1,25 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= h @letter.sender.nickname %> to <%= h @letter.receiver.nickname %></p>
 <p>
-  <b>Sendid:</b>
-  <%= @letter.sendid %>
-</p>
-
-<p>
-  <b>Recid:</b>
-  <%= @letter.recid %>
-</p>
-
-<p>
-  <b>Text:</b>
   <%= @letter.text %>
 </p>
-
-<p>
-  <b>Day:</b>
-  <%= @letter.day %>
-</p>
-
+<p><% h @letter.created_at.to_s %></p>
 
 <%= link_to 'Edit', edit_letter_path(@letter) %> |
 <%= link_to 'Back', letters_path %>

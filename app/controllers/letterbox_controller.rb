@@ -4,8 +4,10 @@ class LetterboxController < ApplicationController
   end
 
   def conversation
-    @letters = Letter.conversation(params[:id].to_i,current_user.id).order_by('created_at DESC').limit(10)
+    receiver_id = params[:id].to_i
+    @letters = Letter.conversation(receiver_id,current_user.id).order('created_at DESC').limit(10)
+    @user_write_to = User.find(params[:id].to_i)
     @new_letter = Letter.new
-    @new_letter.sender_id = current_user.id
+    @new_letter.receiver_id = receiver_id
   end
 end
