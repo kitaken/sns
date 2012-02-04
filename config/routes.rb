@@ -1,6 +1,8 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
 
+  resources :friends
+
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox
     get "/:id", :to=>"letterbox#conversation",:as=>:conversation
