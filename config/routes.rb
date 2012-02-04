@@ -3,6 +3,8 @@ Sns::Application.routes.draw do
 
   resources :friends
 
+  resources :profiles
+
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox
     get "/:id", :to=>"letterbox#conversation",:as=>:conversation
