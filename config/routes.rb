@@ -1,9 +1,9 @@
-#coding:UTF-8
+0;95;c#coding:UTF-8
 Sns::Application.routes.draw do
 
   resources :friends
 
-  resources :profiles
+  match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
 
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox
