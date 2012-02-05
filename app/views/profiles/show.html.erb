@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%= @profile %>
+
 <div id="pic">
   <p>
-    <%= image_tag( @profile.thumbnail.url,:size => '50x50') %><br>
+    <%= image_tag( @profile.thumbnail.url, :size => '50x50') %><br>
     <b>プロフィール画像:</b>
   </p>
 

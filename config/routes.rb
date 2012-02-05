@@ -1,4 +1,4 @@
-0;95;c#coding:UTF-8
+#coding:UTF-8
 Sns::Application.routes.draw do
 
   resources :friends

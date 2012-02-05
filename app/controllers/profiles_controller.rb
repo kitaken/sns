@@ -1,4 +1,4 @@
-0;95;cclass ProfilesController < ApplicationController
+class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
@@ -34,7 +34,7 @@
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by_user_id(params[:user_id])
   end
 
   # POST /profiles
@@ -56,7 +56,7 @@
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by_user_id(params[:user_id])
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -72,7 +72,7 @@
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @profile = Profile.find(params[:user_id])
+    @profile = Profile.find_by_user_id(params[:user_id])
     @profile.destroy
 
     respond_to do |format|
