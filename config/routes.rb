@@ -3,6 +3,8 @@ Sns::Application.routes.draw do
 
   resources :friends
 
+  match 'friends/remove' => 'friends#remove', :via => :post
+
   match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
 
   scope '/letterbox' do
