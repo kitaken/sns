@@ -5,7 +5,7 @@ Sns::Application.routes.draw do
 
   match 'friends/remove' => 'friends#remove', :via => :post
 
-  match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
+  #match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
 
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox

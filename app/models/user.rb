@@ -9,4 +9,13 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_one :friend
+  after_create :add_profile
+  def add_profile
+    profile = Profile.new
+    profile.id = self.id
+    profile.user_id = self.id
+    if !profile.save
+      raise Exception 
+    end
+  end
 end

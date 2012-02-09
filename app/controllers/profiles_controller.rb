@@ -1,19 +1,22 @@
 class ProfilesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /profiles
   # GET /profiles.json
+  
   def index
-    @profiles = Profile.all
+    redirect_to root_url
+  #  @profiles = Profile.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @profiles }
+  #  end
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @profile = Profile.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -23,6 +26,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   # GET /profiles/new.json
+  #
   def new
     @profile = Profile.new
 
@@ -34,7 +38,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find_by_user_id(params[:user_id])
+    if current_user.id == params[:id].to_i
+      @profile = Profile.find(params[:id])
+    else
+      redirect_to profile_url(params[:id])
+    end
   end
 
   # POST /profiles
@@ -56,7 +64,10 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @profile = Profile.find(params[:id])
+    if @profile.user_id != current_user.id
+      redirect_to @profile, notice:'You dont have a permission'
+    end
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -71,6 +82,7 @@ class ProfilesController < ApplicationController
 
   # DELETE /profiles/1
   # DELETE /profiles/1.json
+  #
   def destroy
     @profile = Profile.find_by_user_id(params[:user_id])
     @profile.destroy

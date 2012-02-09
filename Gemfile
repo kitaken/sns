@@ -21,6 +21,8 @@ gem 'jquery-rails'
 
 gem 'devise', '>= 1.4.9'
 gem 'therubyracer'
+gem 'paperclip'
+gem 'rmagick'
 
 
 # To use ActiveModel has_secure_password

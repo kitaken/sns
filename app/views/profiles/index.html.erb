@@ -8,10 +8,6 @@
     <th>Affiliation</th>
     <th>Gender</th>
     <th>Introduction</th>
-    <th>Pic</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @profiles.each do |profile| %>
@@ -22,7 +18,6 @@
     <td><%= profile.affiliation %></td>
     <td><%= profile.gender %></td>
     <td><%= profile.introduction %></td>
-    <td><%= image_tag( profile.thumbnail.url,:size => '50x50') %><td>
     <td><%= link_to 'Show', profile %></td>
     <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
     <td><%= link_to 'Destroy', profile, confirm: 'Are you sure?', method: :delete %></td>
