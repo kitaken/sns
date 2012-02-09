@@ -11,6 +11,8 @@ Sns::Application.routes.draw do
     resources :attendances
   end
 
+  resources :profiles
+
   resources :questions do 
     resources :answers
   end
