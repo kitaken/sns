@@ -1,6 +1,12 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
 
+  resources :friends
+
+  match 'friends/remove' => 'friends#remove', :via => :post
+
+  match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
+
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox
     get "/:id", :to=>"letterbox#conversation",:as=>:conversation
