@@ -1,0 +1,32 @@
+<h1>Listing friends</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @friends.each do |friend| %>
+  <tr>
+    <td>
+      <%= friend.other_user_id %>
+    </td>
+    <td>
+      <%= friend.status %>
+    </td>
+    <td>
+      <%= link_to 'Profiles', profile_path(friend.other_user_id) %>
+    </td>
+    <td>
+      <%= link_to 'Remove', friend, confirm: 'Are you sure?', method: :remove %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Friend', new_friend_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @friends.each do |friend| %>
+  <tr>
+    <td>
+      <%= friend.other_user_id %>
+    </td>
+    <td>
+      <%= friend.status %>
+    </td>
+    <td>
+      <%= link_to 'Profiles', profile_path(friend.other_user_id) %>
+    </td>
+    <td>
+      <%= link_to 'Remove', { :controller => "friends", :action => "remove", :user_id => friend.user_id, :other_user_id => friend.other_user_id }, { :confirm => 'Are you sure?', :method => "POST" } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Back', friends_path %>
