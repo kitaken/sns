@@ -1,11 +1,14 @@
 #coding:UTF-8
 Sns::Application.routes.draw do
 
-  resources :friends
-
-  match 'friends/remove' => 'friends#remove', :via => :post
-
-  #match 'profiles/:user_id' => 'profiles#show', :as => :show_profile
+  scope "/friend" do
+    get "/applicate", :to => "friends#applicate", :via => :post
+    get "/accept",    :to => "friends#accept",    :via => :post
+    get "/block", :to => "friends#block", :via => :post
+    get "/cancel", :to => "friends#cancel", :via => :post
+    get "/remove",    :to => "friends#remove",    :via => :post
+    get "/:id",       :to => "friends#index",     :via => :get, :as => :friends
+  end
 
   scope '/letterbox' do
     get "/" , :to=>"letterbox#index",:as=>:letterbox

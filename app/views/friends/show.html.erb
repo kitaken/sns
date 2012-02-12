@@ -21,7 +21,6 @@
       <%= link_to 'Profiles', profile_path(friend.other_user_id) %>
     </td>
     <td>
-      <%= link_to 'Remove', { :controller => "friends", :action => "remove", :user_id => friend.user_id, :other_user_id => friend.other_user_id }, { :confirm => 'Are you sure?', :method => "POST" } %>
     </td>
   </tr>
 <% end %>

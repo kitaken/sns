@@ -6,7 +6,6 @@
     <th>Status</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @friends.each do |friend| %>
@@ -18,15 +17,15 @@
       <%= friend.status %>
     </td>
     <td>
-      <%= link_to 'Profiles', profile_path(friend.other_user_id) %>
+      <% if friend.status == "applicated" then %>
+      <%= link_to("Accept", :controller => "friends", :action => :accept, :id => current_user.id, :other_user_id => friend.other_user_id ) %>
+      <% end %>
+      <%= link_to("Remove", :controller => "friends", :action => :remove, :id => current_user.id, :other_user_id => friend.other_user_id ) %>
     </td>
     <td>
-      <%= link_to 'Cancel', friend, confirm: 'Are you sure?', method: :cancel %>
     </td>
   </tr>
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Friend', new_friend_path %>
