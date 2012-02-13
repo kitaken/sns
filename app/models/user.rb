@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :nickname
 
   has_one :profile
-  has_one :friend
+  has_many :friendships
+  has_many :friends, :through=>:friendships, :class_name => :User, :source=>:friend
   after_create :add_profile
   def add_profile
     profile = Profile.new
