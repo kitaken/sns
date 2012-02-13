@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
-
+    @friend = Friendship.find_by_user_id_and_friend_id(current_user.id, @profile.user_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @profile }
