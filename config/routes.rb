@@ -27,6 +27,7 @@ Sns::Application.routes.draw do
   end
 
   root :to=> 'welcome#index'
+  match '/preferences', :to=> 'welcome#preferences',:as=>:user_preferences
 
   resources :articles do
     resources :translations
