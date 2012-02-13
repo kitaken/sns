@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @categories = Category.all
   end
 
   # POST /events

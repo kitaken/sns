@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
   <h2><%= h @question.title %></h2>
+  <p><%= h @question.category.name %></p>
   <p><%= h @question.user.nickname %></p>
   <p><%= h(@question.body).gsub(/\n/,"<br />") %></p>
   <p>

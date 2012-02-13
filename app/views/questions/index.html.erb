@@ -6,6 +6,7 @@
 
 <% @questions.each do |question| %>
   <h2><%= h question.title %></h2>
+  <p><%= h question.category.name %></p>
   <p><%= h question.user.nickname %></p>
   <p><%= question.body.gsub(/\n/,"<br />") %></p>
   <p>

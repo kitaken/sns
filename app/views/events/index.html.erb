@@ -2,6 +2,7 @@
 
 <% @events.each do |event| %>
 	<h2><%= h event.title %></h2>
+  <p><%= h event.category.name %></p>
 	<p><%= h event.body %></p>
 	<table>
 		<tr><th>Start</th><td><%= event.start %></td></tr>
