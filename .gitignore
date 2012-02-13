@@ -10,3 +10,4 @@ tmp/
 .DS_Store
 #*#
 public/system/thumbnails/*
+public/system/avatars/*
