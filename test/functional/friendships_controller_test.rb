@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FriendsControllerTest < ActionController::TestCase
+class FriendshipsControllerTest < ActionController::TestCase
   setup do
     @friend = friends(:one)
   end

@@ -3,9 +3,9 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     if params[:user_id] then
-      @friends = Friend.find_all_by_user_id(params[:user_id])
+      @friends = Friendship.find_all_by_user_id(params[:user_id])
     else
-      @friends = Friend.find_all_by_user_id(params[:id])
+      @friends = Friendship.find_all_by_user_id(params[:id])
     end
 
     respond_to do |format|
@@ -18,9 +18,9 @@ class FriendsController < ApplicationController
   # GET /friends/1.json
   def show
     if params[:user_id] then
-      @friends = Friend.find_all_by_user_id(params[:user_id])
+      @friends = Friendship.find_all_by_user_id(params[:user_id])
     else
-      @friends = Friend.find_all_by_user_id(params[:id])
+      @friends = Friendship.find_all_by_user_id(params[:id])
     end
 
     respond_to do |format|
@@ -31,16 +31,16 @@ class FriendsController < ApplicationController
 
   # POST /friends/applicate
   def applicate
-    @friend_1 = Friend.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friend.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
+    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
 
     if @friend_1 == nil || @friend_2 == nil then
-      @friend_1 = Friend.new(
+      @friend_1 = Friendship.new(
                              :user_id       => params[:id],
                              :other_user_id => params[:other_user_id],
                              :status        => "applicating"
                              )
-      @friend_2 = Friend.new(
+      @friend_2 = Friendship.new(
                              :user_id       => params[:other_user_id],
                              :other_user_id => params[:id],
                              :status        => "applicated"
@@ -53,7 +53,7 @@ class FriendsController < ApplicationController
     @friend_1.save
     @friend_2.save
 
-    @friends = Friend.find_all_by_user_id(params[:id])
+    @friends = Friendship.find_all_by_user_id(params[:id])
     respond_to do |format|
       format.html { render :action => "index" }
       format.json { render :action => "index", :json => @friends }
@@ -62,8 +62,8 @@ class FriendsController < ApplicationController
 
   # POST /friends/accept
   def accept
-    @friend_1 = Friend.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friend.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
+    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
 
     if @friend_1 != nil && @friend_2 != nil then
       if @friend_1.status == "applicated" && @friend_2.status == "applicating" then
@@ -77,7 +77,7 @@ class FriendsController < ApplicationController
     end
 
 
-    @friends = Friend.find_all_by_user_id(params[:id])
+    @friends = Friendship.find_all_by_user_id(params[:id])
     respond_to do |format|
       format.html { render :action => "index" }
       format.json { render :action => "index", :json => @friends }
@@ -86,16 +86,16 @@ class FriendsController < ApplicationController
 
   # POST /friends/block
   def block
-    @friend_1 = Friend.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friend.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
+    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
 
     if @friend_1 == nil || @friend_2 == nil then
-      @friend_1 = Friend.new(
+      @friend_1 = Friendship.new(
                              :user_id       => params[:id],
                              :other_user_id => params[:other_user_id],
                              :status        => "blocking"
                              )
-      @friend_2 = Friend.new(
+      @friend_2 = Friendship.new(
                              :user_id       => params[:other_user_id],
                              :other_user_id => params[:id],
                              :status        => "blocked"
@@ -108,7 +108,7 @@ class FriendsController < ApplicationController
     @friend_1.save
     @friend_2.save
 
-    @friends = Friend.find_all_by_user_id(params[:id])
+    @friends = Friendship.find_all_by_user_id(params[:id])
     respond_to do |format|
       format.html { render :action => "index" }
       format.json { render :action => "index", :json => @friends }
@@ -117,8 +117,8 @@ class FriendsController < ApplicationController
 
   # POST /friends/cancel
   def cancel
-    @friend_1 = Friend.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friend.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
+    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
 
     if @friend_1 != nil && @friend_2 != nil then
       if @friend_1.status1 == "blocking" && @friend_2.status == "blocked" then
@@ -127,7 +127,7 @@ class FriendsController < ApplicationController
       end
     end
 
-    @friends = Friend.find_all_by_user_id(params[:id])
+    @friends = Friendship.find_all_by_user_id(params[:id])
     respond_to do |format|
       format.html { render :action => "index" }
       format.json { render :action => "index", :json => @friends }
@@ -136,15 +136,15 @@ class FriendsController < ApplicationController
 
   # POST /friends/remove
   def remove
-    @friend_1 = Friend.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friend.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
+    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
 
     if @friend_1.status != nil && @friend_2.status != nil then
       @friend_1.destroy
       @friend_2.destroy
     end
 
-    @friends = Friend.find_all_by_user_id(params[:id])
+    @friends = Friendship.find_all_by_user_id(params[:id])
     respond_to do |format|
       format.html { render :action => "index" }
       format.json { render :action => "index", :json => @friends }
