@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select :category_id, @categories.map{|e| [e.name,e.id]} %>
+    <%= f.select :category_id, Category.list_for_select %>
   </div>
   <div class="actions">
     <%= f.submit %>

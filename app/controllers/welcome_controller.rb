@@ -5,7 +5,6 @@ class WelcomeController < ApplicationController
 
   def preferences
     @user = User.find(current_user.id)
-    @categories = Category.all
     if request.post?
       @user.update_attributes(params[:user])
     end
