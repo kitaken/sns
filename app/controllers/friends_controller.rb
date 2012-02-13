@@ -31,18 +31,18 @@ class FriendsController < ApplicationController
 
   # POST /friends/applicate
   def applicate
-    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_friend_id(params[:id],params[:friend_id])
+    @friend_2 = Friendship.find_by_friend_id_and_user_id(params[:id],params[:friend_id])
 
     if @friend_1 == nil || @friend_2 == nil then
       @friend_1 = Friendship.new(
                              :user_id       => params[:id],
-                             :other_user_id => params[:other_user_id],
+                             :friend_id => params[:friend_id],
                              :status        => "applicating"
                              )
       @friend_2 = Friendship.new(
-                             :user_id       => params[:other_user_id],
-                             :other_user_id => params[:id],
+                             :user_id       => params[:friend_id],
+                             :friend_id => params[:id],
                              :status        => "applicated"
                              )
     elsif @friend_1.status != "friend" && @friend_1.status != "applicating" then
@@ -62,8 +62,8 @@ class FriendsController < ApplicationController
 
   # POST /friends/accept
   def accept
-    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_friend_id(params[:id],params[:friend_id])
+    @friend_2 = Friendship.find_by_friend_id_and_user_id(params[:id],params[:friend_id])
 
     if @friend_1 != nil && @friend_2 != nil then
       if @friend_1.status == "applicated" && @friend_2.status == "applicating" then
@@ -86,18 +86,18 @@ class FriendsController < ApplicationController
 
   # POST /friends/block
   def block
-    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_friend_id(params[:id],params[:friend_id])
+    @friend_2 = Friendship.find_by_friend_id_and_user_id(params[:id],params[:friend_id])
 
     if @friend_1 == nil || @friend_2 == nil then
       @friend_1 = Friendship.new(
                              :user_id       => params[:id],
-                             :other_user_id => params[:other_user_id],
+                             :friend_id => params[:friend_id],
                              :status        => "blocking"
                              )
       @friend_2 = Friendship.new(
-                             :user_id       => params[:other_user_id],
-                             :other_user_id => params[:id],
+                             :user_id       => params[:friend_id],
+                             :friend_id => params[:id],
                              :status        => "blocked"
                              )
     else
@@ -117,8 +117,8 @@ class FriendsController < ApplicationController
 
   # POST /friends/cancel
   def cancel
-    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_friend_id(params[:id],params[:friend_id])
+    @friend_2 = Friendship.find_by_friend_id_and_user_id(params[:id],params[:friend_id])
 
     if @friend_1 != nil && @friend_2 != nil then
       if @friend_1.status1 == "blocking" && @friend_2.status == "blocked" then
@@ -136,8 +136,8 @@ class FriendsController < ApplicationController
 
   # POST /friends/remove
   def remove
-    @friend_1 = Friendship.find_by_user_id_and_other_user_id(params[:id],params[:other_user_id])
-    @friend_2 = Friendship.find_by_other_user_id_and_user_id(params[:id],params[:other_user_id])
+    @friend_1 = Friendship.find_by_user_id_and_friend_id(params[:id],params[:friend_id])
+    @friend_2 = Friendship.find_by_friend_id_and_user_id(params[:id],params[:friend_id])
 
     if @friend_1.status != nil && @friend_2.status != nil then
       @friend_1.destroy

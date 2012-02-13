@@ -11,16 +11,16 @@
 <% @friends.each do |friend| %>
   <tr>
     <td>
-      <%= friend.other_user_id %>
+      <%= friend.friend_id %>
     </td>
     <td>
       <%= friend.status %>
     </td>
     <td>
       <% if friend.status == "applicated" then %>
-      <%= link_to("Accept", :controller => "friends", :action => :accept, :id => current_user.id, :other_user_id => friend.other_user_id ) %>
+      <%= link_to("Accept", :controller => "friends", :action => :accept, :id => current_user.id, :friend_id => friend.friend_id ) %>
       <% end %>
-      <%= link_to("Remove", :controller => "friends", :action => :remove, :id => current_user.id, :other_user_id => friend.other_user_id ) %>
+      <%= link_to("Remove", :controller => "friends", :action => :remove, :id => current_user.id, :friend_id => friend.friend_id ) %>
     </td>
     <td>
     </td>

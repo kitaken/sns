@@ -12,13 +12,13 @@
 <% @friends.each do |friend| %>
   <tr>
     <td>
-      <%= friend.other_user_id %>
+      <%= friend.friend_id %>
     </td>
     <td>
       <%= friend.status %>
     </td>
     <td>
-      <%= link_to 'Profiles', profile_path(friend.other_user_id) %>
+      <%= link_to 'Profiles', profile_path(friend.friend_id) %>
     </td>
     <td>
     </td>
