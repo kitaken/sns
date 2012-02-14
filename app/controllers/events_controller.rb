@@ -36,12 +36,16 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    if current_user.id != @event.user_id
+      redirect_to @event
+    end
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.user_id = current_user.id
 
     respond_to do |format|
       if @event.save
