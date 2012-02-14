@@ -1,6 +1,17 @@
 <h1>Welcome <%= h current_user.nickname %></h1>
 
 <p>Find me in app/views/welcome/index.html.erb</p>
+
+<% @activities.each do |act| %>
+  <div>
+    <h3><%= h act.title %></h3>
+    <p><%= h act.user.nickname %><p>
+    <p><%= h act.category.name %></p>
+    <p><%= h act.description %></p>
+    <p><%= h act.action %></p>
+  </div>
+  
+<% end %>
 <ul>
 	<li><%=link_to 'articles', articles_path %></li>
 	<li><%=link_to 'friends', friends_path(current_user.id) %></li>
